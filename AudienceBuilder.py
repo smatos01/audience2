@@ -56,7 +56,9 @@ if authentication_status: #if true, then run our app
         )
         return df
 
-    chdir('C:\\Users\\smatos\\OneDrive - dentsu\\streamlit\\Audience Builder')
+    current_dir = Path(__file__).parent if "__file__" in locals() else Path.cwd()
+    chdir(current_dir)
+    #chdir('C:\\Users\\smatos\\OneDrive - dentsu\\streamlit\\Audience Builder')
 
     df = get_data_from_excel()
 
