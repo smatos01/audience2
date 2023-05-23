@@ -56,7 +56,7 @@ if authentication_status: #if true, then run our app
         )
         return df
 
-    chdir('C:\\Users\\smatos\\OneDrive - dentsu\\streamlit')
+    chdir('C:\\Users\\smatos\\OneDrive - dentsu\\streamlit\\Audience Builder')
 
     df = get_data_from_excel()
 
