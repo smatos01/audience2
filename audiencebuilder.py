@@ -193,7 +193,7 @@ if authentication_status: #if true, then run our app
     right_column.plotly_chart(fig_customers_by_membership, use_container_width=True)
 
     # QUANTITY BY PRODUCT [BAR CHART] 
-    qty_by_product = df_selection.groupby(by=["product"]).sum()[["quantity"]]
+    qty_by_product = df_selection[["product","quantity"]].groupby(by=["product"]).sum()[["quantity"]]
 
     fig_qty_by_product = px.bar(
         qty_by_product,
