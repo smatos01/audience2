@@ -56,9 +56,7 @@ if authentication_status: #if true, then run our app
         )
         return df
 
-    current_dir = Path(__file__).parent if "__file__" in locals() else Path.cwd()
-    chdir(current_dir)
-    #chdir('C:\\Users\\smatos\\OneDrive - dentsu\\streamlit\\Audience Builder')
+    chdir('C:\\Users\\smatos\\OneDrive - dentsu\\streamlit')
 
     df = get_data_from_excel()
 
@@ -193,12 +191,14 @@ if authentication_status: #if true, then run our app
     right_column.plotly_chart(fig_customers_by_membership, use_container_width=True)
 
     # QUANTITY BY PRODUCT [BAR CHART] 
-    qty_by_product = df_selection[["product","quantity"]].groupby(by=["product"]).sum()[["quantity"]]
+##    qty_by_product = df_selection.groupby(by=["product"]).sum()[["quantity"]]
 
+    qty_by_product = df_selection.groupby(by=["product"]).nunique()[["customer_id"]]
+    
     fig_qty_by_product = px.bar(
         qty_by_product,
         x=qty_by_product.index,
-        y="quantity",
+        y="customer_id",
         title="<b>Quantity by product</b>",
         color_discrete_sequence=["#0083B8"] * len(qty_by_product),
         template="plotly_white",
